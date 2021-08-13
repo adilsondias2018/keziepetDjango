@@ -7,7 +7,7 @@ from django.db.models.fields.related import ForeignKey
 class Group(models.Model):
     name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255)
-    animal = models.ForeignKey("Animal", on_delete=CASCADE)
+   
 
 class Characteristic(models.Model):
     name = models.CharField(max_length=255)
@@ -17,5 +17,6 @@ class Animal(models.Model):
     age = models.FloatField()
     weight = models.FloatField()
     sex = models.CharField(max_length=255)
+    group = models.ForeignKey("Group", on_delete=CASCADE, related_name="animals")
     characteristics = models.ManyToManyField(Characteristic)
 

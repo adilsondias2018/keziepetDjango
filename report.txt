@@ -1,0 +1,121 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+Operations to perform:
+  Synchronize unmigrated apps: messages, rest_framework, staticfiles
+  Apply all migrations: admin, auth, contenttypes, kpet, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying kpet.0001_initial... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_create_animal (kpet.tests.TestAnimalView) ... ok
+test_create_two_animals_with_the_same_characteristic (kpet.tests.TestAnimalView) ... ok
+test_create_two_animals_with_the_same_group (kpet.tests.TestAnimalView) ... ok
+test_delete_animal (kpet.tests.TestAnimalView) ... ok
+test_filter_animals (kpet.tests.TestAnimalView) ... ok
+test_get_two_animals_alike (kpet.tests.TestAnimalView) ... ERROR
+test_list_animals (kpet.tests.TestAnimalView) ... ERROR
+
+======================================================================
+ERROR: test_get_two_animals_alike (kpet.tests.TestAnimalView)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/kpet/tests.py", line 98, in test_get_two_animals_alike
+    get_response = self.client.get("/api/animals/", format="json")
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 288, in get
+    response = super().get(path, data=data, **extra)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 205, in get
+    return self.generic('GET', path, **r)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 233, in generic
+    return super().generic(
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 473, in generic
+    return self.request(**r)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 285, in request
+    return super().request(**kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 237, in request
+    request = super().request(**kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 719, in request
+    self.check_exception(response)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 580, in check_exception
+    raise exc_value
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'animal_id'
+
+======================================================================
+ERROR: test_list_animals (kpet.tests.TestAnimalView)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/kpet/tests.py", line 81, in test_list_animals
+    get_response = self.client.get("/api/animals/", format="json")
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 288, in get
+    response = super().get(path, data=data, **extra)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 205, in get
+    return self.generic('GET', path, **r)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 233, in generic
+    return super().generic(
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 473, in generic
+    return self.request(**r)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 285, in request
+    return super().request(**kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/test.py", line 237, in request
+    request = super().request(**kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 719, in request
+    self.check_exception(response)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/test/client.py", line 580, in check_exception
+    raise exc_value
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/core/handlers/exception.py", line 47, in inner
+    response = get_response(request)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/core/handlers/base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/django/views/generic/base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/adilson/Documentos/Kenzie/Q4/entregas/KenziePet/venv/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'animal_id'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.181s
+
+FAILED (errors=2)
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
